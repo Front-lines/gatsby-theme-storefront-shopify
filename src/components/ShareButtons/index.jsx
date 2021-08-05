@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Flex, Box } from 'theme-ui';
+import { Flex, Box } from 'rebass';
 import styled from '@emotion/styled';
 import * as ReactShare from 'react-share';
 

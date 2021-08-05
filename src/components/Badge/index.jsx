@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Flex, Box } from 'theme-ui';
+import { Flex, Box } from 'rebass';
 
 const Badge = (props) => {
   const {
@@ -26,27 +23,22 @@ const Badge = (props) => {
 
   return (
     <Flex
+      color={textColor}
+      bg={bgColor}
+      alignItems="center"
+      justifyItems="center"
+      justifyContent="center"
+      mx={mx}
+      my={my}
       sx={{
-        color: textColor,
-        bg: bgColor,
-        alignItems: 'center',
-        justifyItems: 'center',
-        justifyContent: 'center',
-        mx,
-        my,
+        display: 'inline-block',
         fontSize: 1,
         width,
         height,
         borderRadius,
       }}
     >
-      <Box
-        sx={{
-          fontFamily: 'body',
-        }}
-      >
-        {text}
-      </Box>
+      <Box fontFamily="body">{text}</Box>
     </Flex>
   );
 };

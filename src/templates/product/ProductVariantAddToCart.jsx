@@ -1,11 +1,8 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React, { useState, useEffect } from 'react';
-import { Button } from 'theme-ui';
+import { Button } from 'rebass';
 import { navigate } from 'gatsby';
 
-import { useShopifyFunctions } from '../../hooks/useShopifyFunctions';
+import useShopifyFunctions from '../../hooks/useShopifyFunctions';
 import { useCurrentVariantContext } from './CurrentVariantContext';
 import strings from './strings.json';
 
@@ -31,7 +28,7 @@ const ProductVariantAddToCart = ({ amount, cartUrl }) => {
     <Button
       disabled={disabled}
       ml="auto"
-      sx={{ width: ['300px', '400px'] }}
+      width={['300px', '400px']}
       onClick={() => {
         addToCartHandler(currentVariant.shopifyId, amount);
       }}

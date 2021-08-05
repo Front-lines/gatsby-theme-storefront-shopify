@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Box, Card, Heading, Text } from 'theme-ui';
+import { Box, Card, Heading, Text } from 'rebass';
 import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby';
 import styled from '@emotion/styled/macro';
 
@@ -132,7 +129,7 @@ const IndividualProduct = ({ product }) => {
   `;
 
   return (
-    <Card px={2} py={2} mb={4} sx={{ width: ['100%', '20%', '30%'] }}>
+    <Card px={2} py={2} mb={4} width={[1, 1 / 2, 1 / 3]}>
       <AddToCardGroupBox>
         <Box>
           <Box

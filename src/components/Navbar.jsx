@@ -1,10 +1,7 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React, { useState } from 'react';
-import { Flex, Text, Box, Link } from 'theme-ui';
+import { Flex, Text, Box } from 'rebass';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Link as GatsbyLink } from 'gatsby';
+import GatsbyLink from 'gatsby-link';
 import styled from '@emotion/styled';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
@@ -82,23 +79,21 @@ const Navbar = (props) => {
     <Nav show={hideNavbarOnScroll}>
       <Box py={[2, 3]} width={1} as="nav" bg="white">
         <Flex
-          sx={{
-            maxWidth: 1300,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+          style={{ maxWidth: 1300 }}
+          justifyContent="center"
+          alignItems="center"
           mx="auto"
           px={[3, null, 4]}
         >
-          <Box sx={{ width: 100 }}>
+          <Box width={100}>
             <Menu menu={menu} />
           </Box>
 
-          <Link
+          <Text
             as={GatsbyLink}
             to="/"
             aria-label={ariaHomaPageLinkLabel}
-            sx={{ textDecoration: 'none' }}
+            style={{ textDecoration: 'none' }}
             ml="auto"
           >
             {logo ? (
@@ -119,19 +114,16 @@ const Navbar = (props) => {
                 <Text
                   ml={2}
                   color="primary"
-                  sx={{
-                    display: ['none', 'block'],
-                    fontSize: [2, 3],
-                    textDecoration: 'none',
-                  }}
+                  fontSize={[2, 3]}
+                  sx={{ display: ['none', 'block'] }}
                 >
                   {storeName}
                 </Text>
               </Flex>
             )}
-          </Link>
+          </Text>
 
-          <Flex ml="auto" sx={{ width: 100 }}>
+          <Flex ml="auto" width={100}>
             <Box ml="auto">
               <Search width="25px" height="25px" color="primary" />
             </Box>
@@ -140,7 +132,8 @@ const Navbar = (props) => {
               as={GatsbyLink}
               aria-label={ariaShoppingCartLabel}
               to="/cart"
-              sx={{ textDecoration: 'none', fontSize: 4 }}
+              fontSize={4}
+              style={{ textDecoration: 'none' }}
               ml="auto"
             >
               <ShoppingCart width="25px" height="25px" color="primary" />

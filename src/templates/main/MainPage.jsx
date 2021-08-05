@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Box } from 'theme-ui';
+import { Box } from 'rebass';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import MainPageCarousel from './MainPageCarousel';
@@ -58,13 +55,13 @@ const MainPage = (props) => {
       {mainPage.map((block, index) => {
         if (block.type === 'carousel') {
           return (
-            <Box sx={{ width: '100%' }} mb={1} key={index}>
+            <Box width={1} mb={1} key={index}>
               <MainPageCarousel carousel={block} data={data} />
             </Box>
           );
         } else if (block.type === 'section') {
           return (
-            <Box sx={{ width: '100%' }} mb={1} key={index}>
+            <Box width={1} mb={1} key={index}>
               <MainPageSection section={block} data={data} />
             </Box>
           );
@@ -73,14 +70,14 @@ const MainPage = (props) => {
           (block.type === 'collection' && block.isExpanded === false)
         ) {
           return (
-            <Box sx={{ width: '100%' }} mb={1} key={index}>
+            <Box width={1} mb={1} key={index}>
               <MainPageSection section={{ children: [block] }} data={data} />
             </Box>
           );
         } else if (block.type === 'collection' && block.isExpanded == true) {
           let products = [];
-          props.data.feauturedCollections.nodes.forEach((node) => {
-            if (node.handle === block.handle && node.products) {
+          props.data.feautiredCollections.nodes.forEach((node) => {
+            if (node.handle === block.handle) {
               products = [...products, ...node.products];
             }
           });

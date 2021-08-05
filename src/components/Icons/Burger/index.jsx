@@ -1,18 +1,9 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Flex } from 'theme-ui';
+import { Flex } from 'rebass';
 
-const Burger = (props) => {
+const Burger = props => {
   return (
-    <Flex
-      sx={{
-        justifyContent: 'center',
-        width: props.width,
-        height: props.height,
-      }}
-    >
+    <Flex {...props} justifyContent="center">
       <svg
         width={props.width ? props.width : '100%'}
         height={props.height ? props.height : '100%'}

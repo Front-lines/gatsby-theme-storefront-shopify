@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-
 import React, { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { useThemeUI, Flex, Box } from 'theme-ui';
+import { Flex, Box } from 'rebass';
 import { CarouselContext, Dot } from 'pure-react-carousel';
 
 import ShopifyImage from '../../components/ShopifyImage';
@@ -20,15 +19,13 @@ const ThumbnailBox = styled(Box)(
   })
 );
 
-const ThumbnailFlex = styled(Flex)(({ theme, transformPx }) => {
-  return {
-    transition: '0.5s ease all',
-    transform: `translateX(${transformPx}px)`,
-    [theme.mediaQueries[1]]: {
-      transform: `translateY(${transformPx}px)`,
-    },
-  };
-});
+const ThumbnailFlex = styled(Flex)(({ theme, transformPx }) => ({
+  transition: '0.5s ease all',
+  transform: `translateX(${transformPx}px)`,
+  [theme.mediaQueries[1]]: {
+    transform: `translateY(${transformPx}px)`,
+  },
+}));
 
 function ProductGalleryThumbnails({
   images,
@@ -41,8 +38,6 @@ function ProductGalleryThumbnails({
   const [currentImageIndex, setCurrentImageIndex] = useState(
     carouselContext.state.currentSlide
   );
-
-  const { theme } = useThemeUI();
 
   useEffect(() => {
     function onChange() {
@@ -64,8 +59,8 @@ function ProductGalleryThumbnails({
 
   return (
     <Box
+      width={1}
       sx={{
-        width: '100%',
         maxHeight: maxContainerHeight,
         overflow: ['scroll', 'hidden'],
         '::-webkit-scrollbar': {
@@ -76,12 +71,9 @@ function ProductGalleryThumbnails({
       }}
     >
       <ThumbnailFlex
-        sx={{
-          flexDirection: ['row', null, 'column'],
-          width: [images.length * maxImageWidth, null, '100%'],
-        }}
+        flexDirection={['row', null, 'column']}
+        width={[images.length * maxImageWidth, null, 1]}
         transformPx={calculateTransform()}
-        theme={theme}
       >
         {images.map((image, index) => (
           <Dot
@@ -109,9 +101,8 @@ function ProductGalleryThumbnails({
               currentImageIndex={currentImageIndex}
               maxImageHeight={maxImageHeight}
               maxImageWidth={maxImageWidth}
-              sx={{ width: [100, null, 'auto'] }}
+              width={[100, null, 'auto']}
               onClick={() => setCurrentImageIndex(index)}
-              theme={theme}
             >
               {image && image.localFile && image.localFile.childImageSharp ? (
                 <ShopifyImage

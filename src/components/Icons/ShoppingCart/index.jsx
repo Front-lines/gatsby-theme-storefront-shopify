@@ -1,21 +1,10 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Flex } from 'theme-ui';
+import { Flex } from 'rebass';
 
-const ShoppingCart = (props) => {
+const ShoppingCart = props => {
   return (
-    <Flex
-      sx={{
-        justifyContent: 'center',
-        width: props.width,
-        height: props.height,
-        color: props.color,
-      }}
-    >
+    <Flex {...props} justifyContent="center">
       <svg
-        color={props.color}
         width={props.width ? props.width : '100%'}
         height={props.height ? props.height : '100%'}
         xmlns="http://www.w3.org/2000/svg"

@@ -83,6 +83,7 @@ const config = ({
       resolve: 'gatsby-plugin-offline',
     },
     'gatsby-plugin-robots-txt',
+    'gatsby-plugin-lint-queries',
     {
       resolve: '@gatsby-contrib/gatsby-plugin-elasticlunr-search',
       options: {

@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Text } from 'theme-ui';
+import { Text } from 'rebass';
 
 const DescriptionBox = (props) => {
   return <Text dangerouslySetInnerHTML={{ __html: props.source }} />;

@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Box } from 'theme-ui';
+import { Box } from 'rebass';
 
 const Divider = (props) => (
   <Box

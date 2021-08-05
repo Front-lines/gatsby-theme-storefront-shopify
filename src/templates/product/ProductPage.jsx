@@ -1,8 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React, { useState } from 'react';
-import { Flex, Box, Text } from 'theme-ui';
+import { Flex, Box, Text } from 'rebass';
 import { Helmet } from 'react-helmet';
 import loadable from '@loadable/component';
 import { CarouselProvider } from 'pure-react-carousel';
@@ -122,19 +119,19 @@ function ProductPage({ data, pageContext, location }) {
         totalSlides={images.length}
       >
         <Flex
+          flexDirection={['column', null, 'row']}
           pt={3}
           px={2}
           mx="auto"
-          sx={{ flexDirection: ['column', null, 'row'], maxWidth: 1300 }}
+          sx={{ maxWidth: 1300 }}
+          fontFamily="body"
         >
           {images && images.length > 1 ? (
             <Box
-              sx={{
-                width: ['100%', null, '10%'],
-                order: [2, null, 1],
-              }}
+              width={[1, null, 1 / 10]}
               py={2}
               px={[2, null, 0]}
+              order={[2, null, 1]}
             >
               <ProductGalleryThumbnails
                 images={images}
@@ -146,12 +143,13 @@ function ProductPage({ data, pageContext, location }) {
             ''
           )}
           <Box
-            sx={{ width: ['100%', null, '60%'], order: [1, null, 2] }}
+            width={[1, null, 6 / 10]}
             ml="auto"
             py={2}
             pr={images && images.length > 1 ? [2, null, 3] : [2, null, 3]}
             pl={images && images.length > 1 ? [2, null, 3] : [2, null, 0]}
             data-product-image-container
+            order={[1, null, 2]}
           >
             {/* Breadcrumbs block 1 for mobile */}
             <Box mb={1} sx={{ display: ['block', 'block', 'none'] }}>
@@ -171,13 +169,11 @@ function ProductPage({ data, pageContext, location }) {
           </Box>
 
           <Flex
-            sx={{
-              width: ['100%', null, '40%'],
-              flexDirection: 'column',
-              order: 3,
-            }}
+            flexDirection="column"
+            width={[1, null, 4 / 10]}
             px={[2, null, 3]}
             data-product-info
+            order={3}
           >
             {/* Breadcrumbs block 2 for desktop */}
             <Box sx={{ display: ['none', 'none', 'block'] }} pt={1}>
@@ -216,11 +212,11 @@ function ProductPage({ data, pageContext, location }) {
                 mb={4}
               />
 
-              <Flex sx={{ alignItems: 'center' }} mb={4}>
+              <Flex alignItems="center" mb={4}>
                 <Box mr={2}>
                   <Text>{productQuantityLabel}</Text>
                 </Box>
-                <Box sx={{ width: '20%' }}>
+                <Box width={0.2}>
                   <ProductCounter
                     decreaseAmount={decreaseAmount}
                     increaseAmount={increaseAmount}
@@ -272,7 +268,7 @@ function ProductPage({ data, pageContext, location }) {
               ''
             )}
 
-            <Flex mb={4} sx={{ alignItems: 'center' }}>
+            <Flex mb={4} alignItems="center">
               <Box mr={2}>
                 <Text>{shareButtonsLabel}</Text>
               </Box>
@@ -282,8 +278,14 @@ function ProductPage({ data, pageContext, location }) {
             </Flex>
           </Flex>
         </Flex>
-        <Flex pt={3} px={4} mx="auto" sx={{ maxWidth: 1300 }}>
-          <Box sx={{ width: '100%' }}>
+        <Flex
+          pt={3}
+          px={4}
+          mx="auto"
+          style={{ maxWidth: 1300 }}
+          fontFamily="body"
+        >
+          <Box width={1}>
             <Divider bg="grey" mb={4} />
             <ProductDescription
               description={withoutShortDescription || description}

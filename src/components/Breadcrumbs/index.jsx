@@ -1,9 +1,6 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Box, Text } from 'theme-ui';
-import { Link as GatsbyLink } from 'gatsby';
+import { Box, Text } from 'rebass';
+import GatsbyLink from 'gatsby-link';
 
 const Breadcrumbs = ({
   productTitle,
@@ -12,11 +9,7 @@ const Breadcrumbs = ({
   separator,
 }) => {
   return (
-    <Box
-      sx={{ fontSize: [2] }}
-      itemScope
-      itemType="https://schema.org/BreadcrumbList"
-    >
+    <Box fontSize={[2]} itemScope itemType="https://schema.org/BreadcrumbList">
       <Box
         as="span"
         itemProp="itemListElement"

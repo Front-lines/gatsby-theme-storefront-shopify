@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
 
 import React from 'react';
-import { Flex, Box } from 'theme-ui';
+import { jsx } from 'theme-ui';
+import { Flex, Box } from 'rebass';
 
 import MainPageCollectionBlock from './MainPageCollectionBlock';
 import MainPageProductBlock from './MainPageProductBlock';
@@ -16,13 +16,8 @@ const MainPageSection = (props) => {
   const sectionHeight = sectionItemsNumber < 3 ? '60vh' : '40vh';
 
   return (
-    <Box sx={{ maxWidth: 1300, mx: 'auto' }}>
-      <Flex
-        sx={{
-          flexWrap: 'wrap',
-          mx: 2,
-        }}
-      >
+    <Box maxWidth={1300} mx="auto">
+      <Flex flexWrap="wrap" mx={2}>
         {section.children.map((block, index) => {
           if (
             block.type === 'collection' &&
@@ -32,13 +27,11 @@ const MainPageSection = (props) => {
           ) {
             return (
               <Box
-                sx={{
-                  p: 1,
-                  mb: [3, 0],
-                  width: ['100%', 100 / sectionItemsNumber + '%'],
-                  height: ['60vh', sectionHeight],
-                }}
+                width={[1, 1 / sectionItemsNumber]}
                 key={index}
+                height={['60vh', sectionHeight]}
+                p={1}
+                mb={[3, 0]}
               >
                 <MainPageCollectionBlock
                   block={block}
@@ -70,13 +63,11 @@ const MainPageSection = (props) => {
           ) {
             return (
               <Box
-                sx={{
-                  p: 1,
-                  mb: [3, 0],
-                  width: ['100%', 100 / sectionItemsNumber + '%'],
-                  height: ['60vh', sectionHeight],
-                }}
+                width={[1, 1 / sectionItemsNumber]}
                 key={index}
+                height={['60vh', sectionHeight]}
+                p={1}
+                mb={[3, 0]}
               >
                 <MainPageProductBlock
                   block={block}

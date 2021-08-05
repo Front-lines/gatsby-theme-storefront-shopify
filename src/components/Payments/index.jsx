@@ -1,15 +1,12 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { Flex, Box } from 'theme-ui';
+import { Flex, Box } from 'rebass';
 
 import PaymentIcon from 'react-payment-icons-inline';
 
 const Payments = ({ payments }) => {
   return (
     <Flex>
-      {payments.map((p) => {
+      {payments.map(p => {
         return (
           <Box mr={[1, 2]} key={p}>
             <PaymentIcon

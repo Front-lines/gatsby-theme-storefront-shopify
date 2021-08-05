@@ -1,15 +1,12 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
-import { useThemeUI, Flex, Box, Button, Heading, Text } from 'theme-ui';
+import { Flex, Box, Button, Heading, Text } from 'rebass';
 import styled from '@emotion/styled';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import strings from './strings.json';
 import Divider from '../../components/Divider';
 import formatPrice from '../../utils/formatPrice';
-import { useShopifyFunctions } from '../../hooks/useShopifyFunctions';
+import useShopifyFunctions from '../../hooks/useShopifyFunctions';
 import LineItem from './LineItem';
 
 const { cartSubtotalLabel, cartCheckoutButton, cartHeader } = strings;
@@ -42,8 +39,6 @@ function CartPage() {
     currency
   );
 
-  const { theme } = useThemeUI();
-
   async function decreaseProductAmount({ id, quantity }) {
     if (quantity === 1) return;
     try {
@@ -64,10 +59,10 @@ function CartPage() {
   const buttonEnabled = checkout.loaded && checkout.lineItems.length > 0;
 
   return (
-    <Box sx={{ px: 2, pt: 3, maxWidth: 1300 }}>
+    <React.Fragment>
       <Flex my={[3, 4]}>
         <Box p={[1, 3]}>
-          <Heading sx={{ fontSize: [3, 4, 5] }}>{cartHeader}</Heading>
+          <Heading fontSize={[3, 4, 5]}>{cartHeader}</Heading>
         </Box>
       </Flex>
       <Flex
@@ -78,7 +73,7 @@ function CartPage() {
           borderColor: 'grey',
         }}
       >
-        <Box sx={{ width: '100%' }}>
+        <Box width={1}>
           <Flex
             sx={{
               borderWidth: '0px',
@@ -88,53 +83,32 @@ function CartPage() {
             }}
           >
             <Box
-              sx={{
-                width: ['100%', '20%', '10%'],
-                display: ['none', 'block'],
-              }}
+              width={[1, 2 / 10, 1 / 10]}
               p={[1, 3]}
+              display={['none', 'block']}
             >
               Image
             </Box>
             <Box
-              sx={{
-                width: ['100%', '40%', '50%'],
-                display: ['none', 'block'],
-              }}
+              width={[1, 4 / 10, 5 / 10]}
               p={[1, 3]}
+              display={['none', 'block']}
             >
               Product
             </Box>
-            <Box
-              sx={{
-                width: ['100%', '10%'],
-                display: ['none', 'block'],
-              }}
-              p={[1, 3]}
-            >
+            <Box width={[1, 1 / 10]} p={[1, 3]} display={['none', 'block']}>
               Price
             </Box>
-            <Box
-              sx={{
-                width: ['100%', '30%'],
-                display: ['none', 'block'],
-              }}
-              p={[1, 3]}
-            >
+            <Box width={[1, 3 / 10]} p={[1, 3]} display={['none', 'block']}>
               Amount
             </Box>
           </Flex>
 
           <Flex>
-            <Box
-              mt={2}
-              sx={{
-                width: '100%',
-              }}
-            >
+            <Box mt={2} width={1}>
               {checkout.loaded &&
-                checkout.lineItems.map((lineItem) => (
-                  <React.Fragment key={lineItem.id}>
+                checkout.lineItems.map(lineItem => (
+                  <React.Fragment>
                     <LineItem
                       key={lineItem.id}
                       lineItem={lineItem}
@@ -143,33 +117,27 @@ function CartPage() {
                       removeItem={removeItem}
                       mb={[4, 0]}
                     />
-                    <Box sx={{ display: ['block', 'none'] }}>
-                      <Divider bg="grey" my={1} />
-                    </Box>
+                    <Divider bg="grey" my={1} display={['block', 'none']} />
                   </React.Fragment>
                 ))}
             </Box>
           </Flex>
 
-          <Flex
-            sx={{ justifyContent: 'space-between', alignItems: 'top' }}
-            mt={1}
-          >
-            <Box p={3}>
-              <Text sx={{ fontSize: 3 }}>{cartSubtotalLabel} </Text>
+          <Flex justifyContent="space-between" alignItems="top" mt={1}>
+            <Box p={[1, 3]}>
+              <Text fontSize={3}>{cartSubtotalLabel}</Text>
               <Text>{displaySubtotalPrice}</Text>
             </Box>
-            <Box p={3}>
+            <Box p={[1, 3]}>
               <CheckoutButton
                 as={'a'}
                 href={buttonEnabled && webUrl}
                 variant="primary"
-                px={[3, 5]}
-                py={[2, 3]}
+                px={5}
+                py={3}
                 style={{
                   opacity: buttonEnabled ? 1 : 0.7,
                 }}
-                theme={theme}
               >
                 {cartCheckoutButton}
               </CheckoutButton>
@@ -177,7 +145,7 @@ function CartPage() {
           </Flex>
         </Box>
       </Flex>
-    </Box>
+    </React.Fragment>
   );
 }
 

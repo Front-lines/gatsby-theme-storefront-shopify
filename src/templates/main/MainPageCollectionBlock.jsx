@@ -1,11 +1,10 @@
 /** @jsx jsx */
 /* eslint no-unused-vars: 0 */
-import { jsx } from 'theme-ui';
-
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import { jsx } from 'theme-ui';
 import styled from '@emotion/styled/macro';
-import { Flex, Box, Text, Heading, Button } from 'theme-ui';
+import { Flex, Box, Text, Heading, Button } from 'rebass';
 
 import ShopifyBackgroundImage from '../../components/ShopifyBackgroundImage';
 import substrDescription from '../../utils/substrDescription';
@@ -39,14 +38,14 @@ const MainPageCollectionBlock = (props) => {
           height: '100%',
         }}
       >
-        <Box m="auto" sx={{ textAlign: 'center' }}>
+        <Box m="auto" textAlign="center">
           <GatsbyLink
             to={shopifyThemePath}
             sx={{
               color: textColor,
               textAlign: 'center',
               textDecoration: 'none',
-              '&:hover,&:focus,&:active': {
+              ':hover,:focus,.active': {
                 color: textColor,
                 textDecoration: 'none',
               },
@@ -54,13 +53,15 @@ const MainPageCollectionBlock = (props) => {
           >
             <Heading
               as="h2"
-              sx={{ textTransform: 'uppercase', fontSize: [30, 36, 42] }}
+              fontSize={[30, 36, 42]}
+              sx={{ textTransform: 'uppercase' }}
             >
               {block.name ? block.name : title}
             </Heading>
             <Text
+              fontSize={[1, 2, 3]}
               mt="3"
-              sx={{ display: ['none', 'block'], fontSize: [1, 2, 3] }}
+              sx={{ display: ['none', 'block'] }}
             >
               {block.description
                 ? block.description
